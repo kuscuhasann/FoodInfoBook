@@ -7,7 +7,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FoodDetailFragment">
+    tools:context=".view.FoodDetailFragment">
 
     <ImageView
         android:id="@+id/foodImageViewIdAtFoodDetail"
