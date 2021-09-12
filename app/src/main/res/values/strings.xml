@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">FoodInfoBook</string>
+    <string name="app_name">Yemekler ve Bilgiler</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_go_to_food_detail">Besin Detayına Git</string>
     <string name="button_go_to_food_list">Besin Listesine Git</string>
+    <string name="recycler_warn_mesage">Burada bir şey bulunamadı.</string>
 </resources>

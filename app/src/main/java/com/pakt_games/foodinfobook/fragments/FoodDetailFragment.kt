@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.pakt_games.foodinfobook.R
+import kotlinx.android.synthetic.main.fragment_food_detail.*
 
 class FoodDetailFragment : Fragment() {
 
@@ -30,5 +32,14 @@ class FoodDetailFragment : Fragment() {
             foodId=FoodDetailFragmentArgs.fromBundle(it).foodId
             println("FOOD ID: "+ foodId)
         }
+
+        button_food_detail_id.setOnClickListener {
+            detailFragmentToListFragment(it)
+        }
     }
+
+        private fun detailFragmentToListFragment(view: View) {
+            val action =FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodListFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
 }
