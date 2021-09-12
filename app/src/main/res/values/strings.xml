@@ -6,4 +6,7 @@
     <string name="recycler_warn_mesage">Burada bir şey bulunamadı.</string>
     <string name="default_food_name">Yemek Adı</string>
     <string name="default_food_calorie">Yemek Kalorisi</string>
+    <string name="default_food_carbohydrate">Karbonhidrat Değeri</string>
+    <string name="default_food_protein">Protein Değeri</string>
+    <string name="default_food_fat">Yağ Değeri</string>
 </resources>
