@@ -4,4 +4,6 @@
     <string name="button_go_to_food_detail">Besin Detayına Git</string>
     <string name="button_go_to_food_list">Besin Listesine Git</string>
     <string name="recycler_warn_mesage">Burada bir şey bulunamadı.</string>
+    <string name="default_food_name">Yemek Adı</string>
+    <string name="default_food_calorie">Yemek Kalorisi</string>
 </resources>
