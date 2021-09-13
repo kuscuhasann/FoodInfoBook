@@ -15,7 +15,8 @@ class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<Foo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val inflater=LayoutInflater.from(parent.context)
-        val view=inflater.inflate(R.layout.food_list_recycler_row,parent,true)
+        //attachToRoot if taking parameter true this line exception(WARN)
+        val view=inflater.inflate(R.layout.food_list_recycler_row,parent,false)
         return FoodViewHolder(view)
     }
 

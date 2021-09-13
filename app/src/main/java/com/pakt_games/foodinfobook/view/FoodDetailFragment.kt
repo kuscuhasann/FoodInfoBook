@@ -25,11 +25,7 @@ class FoodDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Get arguments
-        arguments?.let {
-            foodId=FoodDetailFragmentArgs.fromBundle(it).foodId
-            println("FOOD ID: "+ foodId)
-        }
+
 
 
     }
