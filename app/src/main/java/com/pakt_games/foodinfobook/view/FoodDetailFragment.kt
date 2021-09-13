@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.pakt_games.foodinfobook.R
+import com.pakt_games.foodinfobook.viewmodel.FoodDetailViewModel
+import com.pakt_games.foodinfobook.viewmodel.FoodListViewModel
+import kotlinx.android.synthetic.main.fragment_food_detail.*
 
 class FoodDetailFragment : Fragment() {
-
+    private  lateinit var viewModel: FoodDetailViewModel
     private var foodId=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +30,23 @@ class FoodDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel= ViewModelProviders.of(this).get(FoodDetailViewModel::class.java)
+        viewModel.getRoomData()
+        observeLiveData()
 
+    }
 
-
+    private fun observeLiveData() {
+        viewModel.foodLiveData.observe(viewLifecycleOwner, Observer {food->
+            food?.let {
+                //İmage
+                txtFoodNameIdAtFoodDetail.text=it.foodName
+                txtFoodCalorieIdAtFoodDetail.text=it.foodCalorie
+                txtFoodProteinIdAtFoodDetail.text=it.foodProtein
+                txtFoodFatIdAtFoodDetail.text=it.foodFat
+                txtFoodCarbohydrateIdAtFoodDetail.text=it.foodCarbohydrate
+            }
+        })
     }
 
 

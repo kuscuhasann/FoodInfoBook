@@ -3,9 +3,11 @@ package com.pakt_games.foodinfobook.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.pakt_games.foodinfobook.R
 import com.pakt_games.foodinfobook.model.Food
+import com.pakt_games.foodinfobook.view.FoodListFragmentDirections
 import kotlinx.android.synthetic.main.food_list_recycler_row.view.*
 
 class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<FoodRecyclerAdapter.FoodViewHolder>() {
@@ -24,6 +26,11 @@ class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<Foo
         holder.itemView.txtFoodNameIdAtRecyclerRow.text=foodList[position].foodName
         holder.itemView.txtFoodCalorieIdAtRecyclerRow.text=foodList[position].foodCalorie
         //Image to be add
+        holder.itemView.setOnClickListener {
+            val action=FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(0)
+            Navigation.findNavController(it).navigate(action)
+
+        }
     }
 
     override fun getItemCount(): Int {
