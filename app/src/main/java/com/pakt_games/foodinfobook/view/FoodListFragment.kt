@@ -41,6 +41,13 @@ class FoodListFragment : Fragment() {
         foodListRecyclerViewId.layoutManager=LinearLayoutManager(context)
         foodListRecyclerViewId.adapter=recylerFoodAdapter
 
+        swipeRefleshLayout.setOnRefreshListener {
+            foodListFragmentProgressBarId.visibility=View.VISIBLE
+            foodListRecyclerViewId.visibility=View.GONE
+            foodListFragmentRecylerWarnMessageId.visibility=View.GONE
+            viewModel.refleshData()
+            swipeRefleshLayout.isRefreshing=false
+        }
         observeLiveData()
     }
 

@@ -3,24 +3,50 @@ package com.pakt_games.foodinfobook.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pakt_games.foodinfobook.model.Food
+import com.pakt_games.foodinfobook.service.FoodAPIService
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 
 class FoodListViewModel:ViewModel() {
     val foods=MutableLiveData<List<Food>>()
     val foodWarnMessage=MutableLiveData<Boolean>()
     val isFoodLoading=MutableLiveData<Boolean>()
 
+    private val foodAPIService=FoodAPIService()
+    private val disposable=CompositeDisposable()
+
+
     fun refleshData()
     {
-        //fake data
-        val banana=Food("Muz","100","45","12","21","www.test.com")
-        val apple=Food("Apple","200","25","111","121","www.test.com")
-        val nutella=Food("Nutella","700","35","122","221","www.test.com")
-        val beef=Food("Beef","500","65","132","213","www.test.com")
+       getDataFromAPI()
+    }
 
-        val foodList= arrayListOf<Food>(banana,apple,nutella,beef)
+    fun getDataFromAPI()
+    {
+        isFoodLoading.value=true
 
-        foods.value=foodList
-        foodWarnMessage.value=false
-        isFoodLoading.value=false
+        disposable.add(
+            foodAPIService.getData()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object :DisposableSingleObserver<List<Food>>(){
+                    override fun onSuccess(t: List<Food>) {
+                        foods.value=t
+                        foodWarnMessage.value=false
+                        isFoodLoading.value=false
+                    }
+
+                    override fun onError(e: Throwable) {
+                        foodWarnMessage.value=true
+                        isFoodLoading.value=false
+                        e.printStackTrace()
+                    }
+
+                })
+
+        )
+
     }
 }
