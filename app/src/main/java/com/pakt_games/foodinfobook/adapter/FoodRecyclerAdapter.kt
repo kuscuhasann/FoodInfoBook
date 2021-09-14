@@ -7,6 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.pakt_games.foodinfobook.R
 import com.pakt_games.foodinfobook.model.Food
+import com.pakt_games.foodinfobook.util.createPlaceholder
+import com.pakt_games.foodinfobook.util.downloadImage
 import com.pakt_games.foodinfobook.view.FoodListFragmentDirections
 import kotlinx.android.synthetic.main.food_list_recycler_row.view.*
 
@@ -25,7 +27,9 @@ class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<Foo
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         holder.itemView.txtFoodNameIdAtRecyclerRow.text=foodList[position].foodName
         holder.itemView.txtFoodCalorieIdAtRecyclerRow.text=foodList[position].foodCalorie
-        //Image to be add
+        holder.itemView.foodImageViewIdAtRecyclerRow.downloadImage(foodList.get(position).foodImage,
+            createPlaceholder(holder.itemView.context))
+
         holder.itemView.setOnClickListener {
             val action=FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(0)
             Navigation.findNavController(it).navigate(action)
