@@ -70,7 +70,6 @@ class FoodListFragment : Fragment() {
                 else
                     foodListFragmentRecylerWarnMessageId.visibility=View.GONE
             }
-
         })
         viewModel.isFoodLoading.observe(viewLifecycleOwner, Observer { isLoading->
             isLoading?.let {
@@ -86,6 +85,4 @@ class FoodListFragment : Fragment() {
 
         })
     }
-
-
 }

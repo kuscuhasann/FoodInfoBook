@@ -22,7 +22,6 @@ class FoodListViewModel:ViewModel() {
     {
        getDataFromAPI()
     }
-
     fun getDataFromAPI()
     {
         isFoodLoading.value=true
