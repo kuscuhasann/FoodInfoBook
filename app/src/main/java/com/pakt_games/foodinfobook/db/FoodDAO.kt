@@ -1,4 +1,4 @@
-package com.pakt_games.foodinfobook.dao
+package com.pakt_games.foodinfobook.db
 
 import androidx.room.Dao
 import androidx.room.Insert
