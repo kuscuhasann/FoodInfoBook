@@ -28,5 +28,5 @@ data class Food(
 )
 {
     @PrimaryKey(autoGenerate = true)
-    val uuid : Int = 0
+    var uuid : Int = 0
 }

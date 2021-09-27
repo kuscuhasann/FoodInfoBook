@@ -45,7 +45,7 @@ class FoodListFragment : Fragment() {
             foodListFragmentProgressBarId.visibility=View.VISIBLE
             foodListRecyclerViewId.visibility=View.GONE
             foodListFragmentRecylerWarnMessageId.visibility=View.GONE
-            viewModel.refleshData()
+            viewModel.getDataFromAPI()
             swipeRefleshLayout.isRefreshing=false
         }
         observeLiveData()
