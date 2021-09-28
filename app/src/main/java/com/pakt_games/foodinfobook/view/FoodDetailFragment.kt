@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.pakt_games.foodinfobook.R
+import com.pakt_games.foodinfobook.util.createPlaceholder
+import com.pakt_games.foodinfobook.util.downloadImage
 import com.pakt_games.foodinfobook.viewmodel.FoodDetailViewModel
 import com.pakt_games.foodinfobook.viewmodel.FoodListViewModel
 import kotlinx.android.synthetic.main.fragment_food_detail.*
@@ -30,8 +32,13 @@ class FoodDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            foodId=FoodDetailFragmentArgs.fromBundle(it).foodId
+        }
+
         viewModel= ViewModelProviders.of(this).get(FoodDetailViewModel::class.java)
-        viewModel.getRoomData()
+        viewModel.getRoomData(foodId)
         observeLiveData()
 
     }
@@ -45,6 +52,10 @@ class FoodDetailFragment : Fragment() {
                 txtFoodProteinIdAtFoodDetail.text=it.foodProtein
                 txtFoodFatIdAtFoodDetail.text=it.foodFat
                 txtFoodCarbohydrateIdAtFoodDetail.text=it.foodCarbohydrate
+                context?.let {
+                    foodImageViewIdAtFoodDetail.downloadImage(food.foodImage, createPlaceholder(it))
+                }
+
             }
         })
     }

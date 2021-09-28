@@ -11,7 +11,6 @@ fun ImageView.downloadImage(url:String?,placeholder:CircularProgressDrawable)
 {
     //if  image to late coming this screen
     val options=RequestOptions().placeholder(placeholder).error(R.mipmap.ic_launcher_round)
-
     Glide.with(context).setDefaultRequestOptions(options).load(url).into(this)
 }
 
