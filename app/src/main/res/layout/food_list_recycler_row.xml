@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="model"
+            type="com.pakt_games.foodinfobook.model.Food" />
+    </data>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="150dp"
@@ -24,14 +31,14 @@
 
     <TextView
         android:id="@+id/txtFoodNameIdAtRecyclerRow"
-        android:text="@string/default_food_name"
+        android:text="@{model.foodName}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:textStyle="bold"/>
     <TextView
         android:id="@+id/txtFoodCalorieIdAtRecyclerRow"
-        android:text="@string/default_food_calorie"
+        android:text="@{model.foodCalorie}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
