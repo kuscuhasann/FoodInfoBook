@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="model"
+            type="com.pakt_games.foodinfobook.model.Food" />
+    </data>
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,8 +22,9 @@
         android:layout_alignParentTop="true"
         android:minHeight="200dp"
         android:scaleType="fitCenter"
+        android:downloadImage="@{model.foodImage}"
         android:src="@mipmap/ic_launcher_round"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp" />
     <TextView
         android:id="@+id/txtFoodNameIdAtFoodDetail"
         android:layout_width="wrap_content"
@@ -25,7 +32,7 @@
         android:layout_below="@+id/foodImageViewIdAtFoodDetail"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:text="@string/default_food_name"
+        android:text="@{model.foodName}"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
     <TextView
@@ -34,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoodNameIdAtFoodDetail"
         android:textSize="18sp"
-        android:text="@string/default_food_calorie"
+        android:text="@{model.foodCalorie}"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
     <TextView
@@ -43,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoodCalorieIdAtFoodDetail"
         android:textSize="18sp"
-        android:text="@string/default_food_carbohydrate"
+        android:text="@{model.foodCarbohydrate}"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
     <TextView
@@ -52,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoodCarbohydrateIdAtFoodDetail"
         android:textSize="18sp"
-        android:text="@string/default_food_protein"
+        android:text="@{model.foodProtein}"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
     <TextView
@@ -61,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoodProteinIdAtFoodDetail"
         android:textSize="18sp"
-        android:text="@string/default_food_fat"
+        android:text="@{model.foodFat}"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
 
