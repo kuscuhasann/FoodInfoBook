@@ -23,7 +23,12 @@ class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<Foo
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        holder.binding.model=foodList[position]
+        (holder as FoodViewHolder).bind(foodList[position])
+
+        holder.itemView.setOnClickListener {
+            val action=FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(foodList[position].uuid)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -18,6 +18,7 @@ class FoodListFragment : Fragment() {
 
     private lateinit var viewModel:FoodListViewModel
     private var recylerFoodAdapter=FoodRecyclerAdapter(arrayListOf())
+    private var foodId=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,11 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            foodId=FoodDetailFragmentArgs.fromBundle(it).foodId
+        }
+
         //Connecting fragment and ViewModel
         viewModel=ViewModelProviders.of(this).get(FoodListViewModel::class.java)
         viewModel.refleshData()
