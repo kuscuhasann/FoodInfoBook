@@ -6,6 +6,9 @@
         <variable
             name="model"
             type="com.pakt_games.foodinfobook.model.Food" />
+        <variable
+            name="listener"
+            type="com.pakt_games.foodinfobook.adapter.FoodClickListener" />
     </data>
 
 <LinearLayout
