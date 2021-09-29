@@ -6,35 +6,24 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.pakt_games.foodinfobook.R
+import com.pakt_games.foodinfobook.databinding.FoodListRecyclerRowBinding
 import com.pakt_games.foodinfobook.model.Food
 import com.pakt_games.foodinfobook.util.createPlaceholder
 import com.pakt_games.foodinfobook.util.downloadImage
 import com.pakt_games.foodinfobook.view.FoodListFragmentDirections
 import kotlinx.android.synthetic.main.food_list_recycler_row.view.*
 
-class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<FoodRecyclerAdapter.FoodViewHolder>() {
-    class FoodViewHolder(item: View ):RecyclerView.ViewHolder(item) {
-
-    }
+class FoodRecyclerAdapter(val foodList:ArrayList<Food>):RecyclerView.Adapter<FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val inflater=LayoutInflater.from(parent.context)
         //attachToRoot if taking parameter true this line exception(WARN)
-        val view=inflater.inflate(R.layout.food_list_recycler_row,parent,false)
-        return FoodViewHolder(view)
+       val binding=FoodListRecyclerRowBinding.inflate(inflater,parent,false)
+        return FoodViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        holder.itemView.txtFoodNameIdAtRecyclerRow.text=foodList[position].foodName
-        holder.itemView.txtFoodCalorieIdAtRecyclerRow.text=foodList[position].foodCalorie
-        holder.itemView.foodImageViewIdAtRecyclerRow.downloadImage(foodList.get(position).foodImage,
-            createPlaceholder(holder.itemView.context))
-
-        holder.itemView.setOnClickListener {
-            val action=FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(foodList.get(position).uuid)
-            Navigation.findNavController(it).navigate(action)
-
-        }
+        holder.binding.model=foodList[position]
     }
 
     override fun getItemCount(): Int {

@@ -2,6 +2,7 @@ package com.pakt_games.foodinfobook.util
 
 import android.content.Context
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -22,4 +23,9 @@ fun createPlaceholder(contex:Context):CircularProgressDrawable
         centerRadius=40f
         start()
     }
+}
+@BindingAdapter("android:downloadImage")
+fun downloadBindingImage(view: ImageView,url: String?)
+{
+    view.downloadImage(url, createPlaceholder(view.context))
 }

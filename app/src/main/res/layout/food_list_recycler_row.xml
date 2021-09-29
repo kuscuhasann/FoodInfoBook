@@ -15,10 +15,10 @@
 
     <ImageView
         android:id="@+id/foodImageViewIdAtRecyclerRow"
-        android:src="@mipmap/ic_launcher_round"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
+        android:downloadImage="@{model.foodImage}"
         android:layout_margin="3dp"/>
 
     <LinearLayout
